@@ -1,44 +1,42 @@
-import getSpecialData from '../app';
+import attackExtractor from '../app';
 
-test('function should return special attacks list with correct description', () => {
-  const test = {
-    name: 'Лучник',
-    type: 'Bowman',
-    health: 50,
-    level: 3,
-    attack: 40,
-    defence: 10,
-    special: [
-      {
-        id: 8,
-        name: 'Двойной выстрел',
-        icon: 'http://...',
-        description: 'Двойной выстрел наносит двойной урон',
-      },
-      {
-        id: 9,
-        name: 'Нокаутирующий удар',
-        icon: 'http://...',
-        // <- обратите внимание, описание "засекречено"
-      },
-    ],
-  };
-
-  const expected = [
-    {
-      id: 8,
-      name: 'Двойной выстрел',
+test('extract attacks 2', () => {
+	const character = {
+		special: [
+			{
+				id: 8,
+				name: 'Двойной выстрел',
+				icon: 'http://...',
+				description: 'Двойной выстрел наносит двойной урон',
+			},
+			{
+				id: 9,
+				name: 'Нокаутирующий удар',
+				icon: 'http://...',
+			},
+		],
+	};
+	const result = [
+		{
+			id: 8, 
+      name: 'Двойной выстрел', 
+      icon: 'http://...', 
       description: 'Двойной выстрел наносит двойной урон',
-      icon: 'http://...',
-    },
-    {
-      id: 9,
-      name: 'Нокаутирующий удар',
-      description: 'описание недоступно',
-      icon: 'http://...',
-    },
-  ];
+		},
+		{
+			id: 9, 
+      name: 'Нокаутирующий удар', 
+      icon: 'http://...', 
+      description: 'Описание недоступно',
+		},
+	];
+	expect(attackExtractor(character)).toEqual(result);
+});
 
-  const recieved = getSpecialData(test);
-  expect(recieved).toEqual(expected);
+test('extract attacks', () => {
+	const character = {
+		special: [],
+	};
+	const result = [];
+	expect(attackExtractor(character)).toEqual(result);
 });
