@@ -1,7 +1,7 @@
 import getSpecialData from '../app';
 
 test('function should return special attacks list with correct description', () => {
-  const input = {
+  const test = {
     name: 'Лучник',
     type: 'Bowman',
     health: 50,
@@ -13,15 +13,16 @@ test('function should return special attacks list with correct description', () 
         id: 8,
         name: 'Двойной выстрел',
         icon: 'http://...',
-        description: 'Двойной выстрел наносит двойной урон',
-      },
+        description: 'Двойной выстрел наносит двойной урон'
+      }, 
       {
         id: 9,
         name: 'Нокаутирующий удар',
-        icon: 'http://...',
-      },
-    ],
-  };
+        icon: 'http://...'
+        // <- обратите внимание, описание "засекречено"
+      }
+    ]	
+  }
 
   const expected = [
     {
