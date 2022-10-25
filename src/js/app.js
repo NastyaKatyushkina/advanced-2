@@ -1,12 +1,12 @@
-export default function attackExtractor(character) {
-	const result = [];
-	for (const key of character.special) {
-		const {
-			id, name, icon, description = 'Описание недоступно',
-		} = key;
-		result.push({
-			id, name, icon, description,
-		});
-	}
-	return result;
+export default function getOptions(obj) {
+  const result = [];
+  obj.special.forEach((element) => {
+    const {
+      id, name, icon, description = 'Описание недоступно',
+    } = element;
+    result.push({
+      id, name, icon, description,
+    });
+  });
+  return result;
 }
