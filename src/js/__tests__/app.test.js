@@ -22,7 +22,7 @@ test('function should return special attacks list with correct description', () 
         // <- обратите внимание, описание "засекречено"
       },
     ],
-  }
+  };
 
   const expected = [
     {
@@ -39,6 +39,6 @@ test('function should return special attacks list with correct description', () 
     },
   ];
 
-  const recieved = getSpecialData(input);
+  const recieved = getSpecialData(test);
   expect(recieved).toEqual(expected);
 });
